@@ -4,9 +4,6 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
-	"info441-finalproj/servers/gateway/handlers"
-	"info441-finalproj/servers/gateway/models/users"
-	"info441-finalproj/servers/gateway/sessions"
 	"log"
 	"math/rand"
 	"net/http"
@@ -86,9 +83,6 @@ func main() {
 	mux.HandleFunc("/users", handler.UsersHandler)
 	mux.HandleFunc("/sessions", handler.SessionsHandler)
 	mux.HandleFunc("/getuser/", handler.GetUserInfoHandler)
-	mux.Handle("/meeting", meetingProxy)
-	mux.Handle("/meeting/", meetingProxy)
-	mux.Handle("/user/", meetingProxy)
 
 	newMux := handlers.NewPreflight(mux)
 
